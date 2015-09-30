@@ -6,9 +6,9 @@
 hostname: web.domain.com
 hosts:
   - ip: 192.168.66.10
-    name: database
+    name: database.domain.com
     aliases:
-    - database.domain.com
+    - database
 ```
 
 ## Role Variables
