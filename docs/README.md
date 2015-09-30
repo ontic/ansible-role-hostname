@@ -6,7 +6,9 @@
 hostname: web.domain.com
 hosts:
   - ip: 192.168.66.10
-    name: database.domain.com
+    name: database
+    aliases:
+    - database.domain.com
 ```
 
 ## Role Variables
@@ -26,6 +28,6 @@ For example: `web.domain.com` would receive a shortname (alias) of `web`.
 hosts:
 ```
 
-The mapping of *hostnames* to IP addresses. This mapping is kept in the `/etc/hosts` file. In the absence
-of a name server, any network program on your system consults this file to determine the IP address that
-corresponds to a host name.
+The mapping of *hostnames* to IP addresses. Optionally you can specify *aliases* for each entry.
+This mapping is kept in the `/etc/hosts` file. In the absence of a name server, any network program on
+your system consults this file to determine the IP address that corresponds to a host name. 
