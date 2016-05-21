@@ -15,9 +15,6 @@
     owner: root
     group: root
     mode: 0644
-  tags:
-    - configure
-    - hostname
 
 - name: Hostname | Configure hosts file.
   become: yes
@@ -27,6 +24,3 @@
     owner: root
     group: root
     mode: 0644
-  tags:
-    - configure
-    - hostname
