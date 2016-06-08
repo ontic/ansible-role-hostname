@@ -7,20 +7,16 @@
 
 ---
 
-- name: Hostname | Configure hostname file.
+- name: 'Hostname | Configure hostname.'
   become: yes
-  template:
-    src: hostname.j2
-    dest: /etc/hostname
-    owner: root
-    group: root
-    mode: 0644
+  hostname:
+    name: '{{ hostname }}'
 
-- name: Hostname | Configure hosts file.
+- name: 'Hostname | Configure hosts file.'
   become: yes
   template:
-    src: hosts.j2
-    dest: /etc/hosts
-    owner: root
-    group: root
-    mode: 0644
+    src: '{{ hostname_hosts_template }}'
+    dest: '/etc/hosts'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
