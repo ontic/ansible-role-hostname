@@ -11,6 +11,7 @@
   become: yes
   hostname:
     name: '{{ hostname }}'
+  when: '{{ hostname }}'
 
 - name: 'Hostname | Configure hosts file.'
   become: yes
@@ -20,3 +21,4 @@
     owner: 'root'
     group: 'root'
     mode: '0644'
+  when: '{{ hostname and hostname_hosts}}'

@@ -8,5 +8,8 @@
 ---
 
 - hosts: 'all'
+  vars:
+    hostname:
+    hostname_hosts:
   roles:
     - { role: 'ontic.hostname' }

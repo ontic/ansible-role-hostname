@@ -14,14 +14,12 @@ env:
     version: '7'
     init: '/usr/lib/systemd/systemd'
     run_opts: '--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'
-    hostname: 'localhost.localdomain'
     role: 'ontic.hostname'
     playbook: 'playbook.yml'
   - distribution: 'ubuntu'
     version: '16.04'
     init: '/lib/systemd/systemd'
     run_opts: '--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'
-    hostname: 'localhost.localdomain'
     role: 'ontic.hostname'
     playbook: 'playbook.yml'
 
@@ -34,7 +32,7 @@ before_install:
 
 script:
   - 'container_id=$(mktemp)'
-  - 'sudo docker run --detach --hostname=${hostname} --volume="${PWD}":/etc/ansible/roles/${role}:ro ${run_opts} ${distribution}-${version}:ansible "${init}" > "${container_id}"'
+  - 'sudo docker run --detach --volume="${PWD}":/etc/ansible/roles/${role}:ro ${run_opts} ${distribution}-${version}:ansible "${init}" > "${container_id}"'
   - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/${role}/tests/${playbook} --syntax-check'
   - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/${role}/tests/${playbook}'
   - >
