@@ -14,12 +14,14 @@ env:
     version: '7'
     init: '/usr/lib/systemd/systemd'
     run_opts: '--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    hostname: 'localhost.localdomain'
     role: 'ontic.hostname'
     playbook: 'playbook.yml'
   - distribution: 'ubuntu'
     version: '16.04'
     init: '/lib/systemd/systemd'
     run_opts: '--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    hostname: 'localhost.localdomain'
     role: 'ontic.hostname'
     playbook: 'playbook.yml'
 
@@ -28,7 +30,7 @@ services:
 
 before_install:
   - 'sudo docker pull ${distribution}:${version}'
-  - 'sudo docker build --rm=true --file=tests/docker/Dockerfile.${distribution}-${version} --tag=${distribution}-${version}:ansible tests'
+  - 'sudo docker build --rm=true --file=tests/docker/Dockerfile.${distribution}-${version} --hostname=${hostname} --tag=${distribution}-${version}:ansible tests'
 
 script:
   - 'container_id=$(mktemp)'
