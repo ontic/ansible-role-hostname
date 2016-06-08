@@ -3,7 +3,7 @@
 127.0.0.1	localhost.localdomain localhost
 127.0.1.1	{{ hostname }}{% if '.' in hostname %} {{ hostname.split('.')[0] }}{% endif %}
 
-{% if hosts %}
+{% if hostname_hosts %}
 {% for host in hostname_hosts %}
 {{ host.ip }}	{{ host.name }} {{ host.aliases | default('') | join(' ') }}
 {% endfor %}
