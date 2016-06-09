@@ -11,7 +11,7 @@
   become: yes
   hostname:
     name: '{{ hostname }}'
-  when: '{{ hostname }}'
+  when: '{{ hostname | default(None) != None }}'
 
 - name: 'Hostname | Configure hosts file.'
   become: yes
@@ -21,4 +21,4 @@
     owner: 'root'
     group: 'root'
     mode: '0644'
-  when: '{{ hostname and hostname_hosts}}'
+  when: '{{ hostname | default(None) != None and hostname_hosts | default(None) != None}}'
