@@ -7,9 +7,5 @@
   vars:
     hostname: 
     hostname_hosts:
-      - ip: '192.168.66.10'
-        name: 'database.localhost.com'
-        aliases:
-          - 'database'
   roles:
     - { role: 'role_under_test' }
