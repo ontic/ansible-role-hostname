@@ -5,7 +5,7 @@
 
 - hosts: 'localhost'
   vars:
-    hostname: 'localhost.com'
+    hostname: 'localhost.localdomain'
     hostname_hosts:
       - ip: '192.168.66.10'
         name: 'database.localhost.com'
