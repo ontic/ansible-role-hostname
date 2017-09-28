@@ -8,7 +8,7 @@
     hostname: 
     hostname_hosts:
       - ip: '192.168.66.10'
-        name: 'database.localhost'
+        name: 'database.localhost.com'
         aliases:
           - 'database'
   roles:
