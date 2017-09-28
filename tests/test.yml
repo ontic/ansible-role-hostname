@@ -1,0 +1,15 @@
+# Copyright (c) Ontic. (http://www.ontic.com.au). All rights reserved.
+# See the COPYING file bundled with this package for license details.
+
+---
+
+- hosts: 'localhost'
+  vars:
+    hostname: 'localhost.com'
+    hostname_hosts:
+      - ip: '192.168.66.10'
+        name: 'database.localhost.com'
+        aliases:
+          - 'database'
+  roles:
+    - { role: 'role_under_test' }
